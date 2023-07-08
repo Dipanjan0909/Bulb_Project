@@ -1,19 +1,22 @@
 import React,{useState} from "react";
 import Card from "./components/Card";
-import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+
 import { Button } from "@mui/material";
+import Optimised from "./components/Optimised";
+import Unoptimised from "./components/Unoptimised";
 function App() {
-  const [bulb, setBulb]=useState(false);
+  const [btn, setBtn]=useState('optimised');
   return(
-    <div style={{display:'flex', flexDirection:'column' ,alignItems: 'center'}}>
-      <Card obj={bulb}/>
-      <div onClick={()=> setBulb(!bulb)}>
-      <Button variant="outlined" endIcon={<PowerSettingsNewIcon/>}
-      >
-        Click
-      </Button>
-      </div>
-    </div>
+    <>
+    <button onClick={()=> setBtn('optimised')}>
+      optimised
+    </button>
+    
+    <button onClick={()=> setBtn('unoptimised')}>
+      Unoptimized
+    </button>
+    {btn==="optimised"?<Optimised/> : <Unoptimised/>}
+    </>
   );
 }
 
